@@ -1,0 +1,21 @@
+<h1>投稿一覧</h1>
+
+<table>
+
+   <tbody>
+     <% @photos.each do |photo| %>
+       <div>
+         <span> コメント</span>
+         <p><%= photo.content %></p>
+         <span><%= link_to '詳細', photo,class: 'btn btn-default'  %></span>
+         <span><%= link_to '編集', edit_photo_path(photo.id),data: { confirm: '本当に編集していいですか？' },class: 'btn btn-default'   %></span>
+         <span><%= link_to '削除', photo_path(photo.id), method: :delete, data: { confirm: ' 本当に削除していいですか?' },class: 'btn btn-default'  %></span>
+       </div>
+     <% end %>
+   </tbody>
+</table>
+
+<br>
+<% if logged_in? %>
+  <%= link_to '写真を投稿', new_photo_path,class: 'btn btn-info' %>
+<% end %>
