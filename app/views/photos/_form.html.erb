@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div class="field">
+     <%= form.label :image %>
+     <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
+     <%= form.file_field :image %>
+     <%= form.hidden_field :image_cache %>
+   </div>
+
    <div class="field">
      <%= form.label :content %>
      <%= form.text_area :content %>

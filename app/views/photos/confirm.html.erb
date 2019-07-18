@@ -1,13 +1,16 @@
-<h3>以下の内容で、送信する。</h3>
-
+<h3>確認画面</h3>
 <%= form_with(model: @photo, url: photos_path, local: true) do |form| %>
-  <%= form.hidden_field :content %>
+<%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
+   <%= @photo.content %>
+ <%= form.hidden_field :image_cache %>
+ <%= form.hidden_field :content %><br>
 
   <p>コメント:<%= @photo.content %></p>
   <%= form.submit  "登録する" %>
 <% end %>
 
 <%= form_with(model: @photo, url: new_photo_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
   <%= form.submit "戻る",name:'back' %>
 <% end %>

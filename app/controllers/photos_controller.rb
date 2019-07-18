@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update]
+  before_action :set_photo, only: [:show, :edit, :update,:destroy]
   def index
     @photos = Photo.all
   end
@@ -48,7 +48,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:content)
+    params.require(:photo).permit(:content,:image,:image_cache)
   end
 
   def set_photo
