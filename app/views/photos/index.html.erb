@@ -5,8 +5,11 @@
    <tbody>
      <% @photos.each do |photo| %>
        <div>
+         <span>ユーザー名</span><br>
+         <span><%= photo.user.name %></span><br>
          <span> コメント</span>
          <p><%= photo.content %></p>
+         <p><%= image_tag photo.image.url %></p>
 
          <span><%= link_to '詳細', photo,class: 'btn btn-default'  %></span>
          <span><%= link_to '編集', edit_photo_path(photo.id),data: { confirm: '本当に編集していいですか？' },class: 'btn btn-default'   %></span>

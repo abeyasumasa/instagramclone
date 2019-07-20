@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params)
     if @photo.save
       redirect_to photos_path, notice: "ブログを作成しました！"
     else
@@ -42,13 +42,14 @@ class PhotosController < ApplicationController
 
   def confirm
     @photo = Photo.new(photo_params)
+    @photo.user_id = current_user.id
     render :new if @photo.invalid?
   end
 
   private
 
   def photo_params
-    params.require(:photo).permit(:content,:image,:image_cache)
+    params.require(:photo).permit(:content,:image,:image_cache,:user_id)
   end
 
   def set_photo
