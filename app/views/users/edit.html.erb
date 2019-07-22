@@ -1,0 +1,6 @@
+<h1>編集画面</h1>
+
+<%= render 'form', photo: @user %>
+
+<%= link_to '表示', @user %> |
+<%= link_to '戻る', user_path(current_user.id)  %>
