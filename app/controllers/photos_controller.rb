@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update,:destroy]
+  before_action :ensure_correct_user,{only: [:edit, :update,:destroy]}
   def index
     @photos = Photo.all
   end
@@ -55,5 +56,13 @@ class PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.find(params[:id])
+  end
+
+  def ensure_correct_user
+    @user =Photo.find(params[:id])
+      if current_user.id!=  @user.id
+        flash[:notice] = "権限がありません"
+        redirect_to photos_path
+      end
   end
 end
