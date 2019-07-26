@@ -1,0 +1,11 @@
+<% @bookmark.each do |bookmark| %>
+  <div>
+     <span>ユーザー名</span><br>
+     <span><%= bookmark.user.name %></span><br>
+     <span> コメント</span>
+     <p><%= bookmark.content %></p>
+     <p><%= image_tag bookmark.image.url %></p>
+  <div>
+ <% end %>
+
+ <%= link_to 'Back', photos_path %>

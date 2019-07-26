@@ -24,6 +24,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(photo_id: @photo.id)
   end
 
   def edit
