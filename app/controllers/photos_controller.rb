@@ -61,7 +61,8 @@ class PhotosController < ApplicationController
 
   def ensure_correct_user
     @user =Photo.find(params[:id])
-      if current_user.id!=  @user.id
+      if current_user.id!=  @user.user_id
+        binding.pry
         flash[:notice] = "権限がありません"
         redirect_to photos_path
       end
