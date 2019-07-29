@@ -1,9 +1,9 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
-<p>
-  <%= image_tag @user.user_image.url %>
-</p>
+  <p>
+    <%= image_tag @user.user_image.url %>
+  </p>
 
 <%= link_to 'Edit', edit_user_path(@user.id) %>
 <%= link_to 'Back', photos_path %>
