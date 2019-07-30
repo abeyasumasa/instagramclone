@@ -17,5 +17,7 @@
    <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<% if current_user.id == @photo.user_id %>
+  <%= link_to 'Edit', edit_photo_path(@photo) %> |
+<% end %>
+  <p><%= link_to '投稿一覧に戻る', photos_path %></p>

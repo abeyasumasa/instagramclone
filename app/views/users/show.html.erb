@@ -1,9 +1,13 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+<% if @user.user_image.nil? %>
   <p>
     <%= image_tag @user.user_image.url %>
   </p>
+<%else%>
+     <p>画像はありません</p>
+<%end%>
 
-<%= link_to 'Edit', edit_user_path(@user.id) %>
-<%= link_to 'Back', photos_path %>
+<%= link_to '編集', edit_user_path(@user.id) %>
+<%= link_to '投稿一覧に戻る', photos_path %>
