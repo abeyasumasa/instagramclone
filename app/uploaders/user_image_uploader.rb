@@ -4,8 +4,8 @@ class UserImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   process resize_to_limit: [300, 300] # 画像サイズの調整
 
